@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" type="text/css" href="adminLogin.css">
+    <script>
+        // JavaScript function to display error message
+        function displayErrorMessage() {
+            var signInError = "<%= request.getAttribute('errorMessage') %>";
+            if (signInError && signInError.trim() !== "") {
+                var errorMessageElement = document.getElementById("errorMessage");
+                errorMessageElement.innerHTML = "<p style='color: red;'>" + signInError + "</p>";
+            }
+        }
+    </script>
+</head>
+<body onload="displayErrorMessage();">
+
+    <div class="card">
+        <h2>Admin Login</h2>
+
+        <!-- Container for displaying error message -->
+        <div id="errorMessage"></div>
+
+        <form class="login-form" action="AdminLoginServlet" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+</body>
+</html>
